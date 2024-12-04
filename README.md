@@ -33,26 +33,26 @@ The project supports two types of variables:
 
 ```
 project_name/
-âââ .env                        # Environment variables for sensitive credentials
-âââ src/
-â   âââ config/
-â   â   âââ settings.yaml        # Centralized configuration for tags and database details
-â   â   âââ loader.py            # YAML loader utility
-â   âââ data/
-â   â   âââ downloader.py        # Selenium logic for downloading data
-â   â   âââ transformer.py       # Data validation and transformation logic
-â   â   âââ writer.py            # Writing data to InfluxDB
-â   âââ models/
-â   â   âââ data_model.py        # Pydantic models for data validation
-â   âââ workflows/
-â   â   âââ pipeline.py          # Prefect flow for orchestrating the pipeline
-â   âââ utils/
-â   â   âââ logger.py            # Logging utility for detailed logs
-â   âââ app.py                   # Entry point to start the Prefect workflow
-âââ tests/                       # Unit tests for various modules
-â   âââ test_transformer.py
-âââ poetry.lock                  # Poetry lock file
-âââ poetry.toml                  # Poetry configuration
+├── .env                        # Environment variables for sensitive credentials
+├── src/
+│   ├── config/
+│   │   ├── settings.yaml        # Centralized configuration for tags and database details
+│   │   ├── loader.py            # YAML loader utility
+│   ├── data/
+│   │   ├── downloader.py        # Selenium logic for downloading data
+│   │   ├── transformer.py       # Data validation and transformation logic
+│   │   ├── writer.py            # Writing data to InfluxDB
+│   ├── models/
+│   │   ├── data_model.py        # Pydantic models for data validation
+│   ├── workflows/
+│   │   ├── pipeline.py          # Prefect flow for orchestrating the pipeline
+│   ├── utils/
+│   │   ├── logger.py            # Logging utility for detailed logs
+│   ├── app.py                   # Entry point to start the Prefect workflow
+├── tests/                       # Unit tests for various modules
+│   ├── test_transformer.py
+├── poetry.lock                  # Poetry lock file
+├── poetry.toml                  # Poetry configuration
 ```
 
 ---
