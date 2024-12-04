@@ -1,0 +1,25 @@
+influxdb:
+  url: "http://localhost:8086"
+  token: "your_influxdb_token"
+  org: "your_org"
+  bucket: "your_bucket"
+
+selenium:
+  url: "https://mcartalert.com/WebService/GeneralService.asmx?op=realtimedataVP"
+  download_dir: "./downloads"  # Relative path for downloads
+  download_button_xpath: "//button[@id='invoke']"
+
+data_tags:
+data_tags:
+  temperature_variables:
+    - "BF2_BFBD Furnace Body 12975mm Temp A"
+    - "BF2_BFBD Furnace Body 12975mm Temp B"
+    - "BF2_BFBD Furnace Body 12975mm Temp C"
+    - "BF2_BFBD Furnace Body 12975mm Temp D"
+    - "BF2_BFBD Furnace Body 15162mm Temp A"
+  switch_variables:
+    - "BF2 Coal flow switch No 1"
+    - "BF2 Coal flow switch No 10"
+    - "BF2 Coal flow switch No 11"
+    - "BF2 Coal flow switch No 12"
+    - "BF2 Coal flow switch No 13"
