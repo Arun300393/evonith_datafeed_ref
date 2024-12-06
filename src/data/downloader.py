@@ -1,4 +1,5 @@
 from utils.logger import setup_logger
+from utils.helper_functions_downloader import remove_csv, rename_csv
 import os
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -81,6 +82,9 @@ def download_csv():
         driver.switch_to.window(main_window)
 
         logger.info("File downloaded successfully.")
+        last_csv = sorted(list(filter(lambda x: '.csv' in x, os.listdir(DOWNLOAD_DIR))))[-1]
+        rename_csv(last_csv)
+        remove_csv()
         return os.path.join(DOWNLOAD_DIR, "data.xlsx")  # Adjust filename if necessary
 
     except Exception as e:

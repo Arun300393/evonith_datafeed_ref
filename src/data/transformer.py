@@ -1,4 +1,5 @@
 import pandas as pd
+from typing import Dict
 from models.data_model import SensorData
 
 def preprocess_file(file_path: str, tags: Dict):

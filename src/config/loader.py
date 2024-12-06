@@ -1,6 +1,8 @@
 import yaml
+import os
+from pathlib import Path
 
-def load_config(config_path: str = "src/config/settings.yaml"):
+def load_config(config_path: str = "src/config/setting.yaml"):
     """
     Load configuration from a YAML file.
     """
