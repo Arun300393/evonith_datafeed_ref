@@ -1,5 +1,3 @@
-from utils.logger import setup_logger
-from utils.helper_functions_downloader import remove_csv, rename_csv
 import os
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -10,6 +8,8 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from dotenv import load_dotenv
 from config.loader import load_config
+from utils.logger import setup_logger
+from utils.helper_functions_downloader import remove_csv, rename_csv
 
 # Load environment variables
 load_dotenv()
