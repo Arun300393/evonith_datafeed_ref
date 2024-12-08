@@ -1,9 +1,0 @@
-import os
-
-def rename_file(file: str) -> None:
-  os.rename(file, "data.csv")
-
-def remove_file() -> None:
-  os.remove("data.csv")
-
-  

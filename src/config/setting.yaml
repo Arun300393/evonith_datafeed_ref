@@ -1,14 +1,14 @@
 influxdb:
   host: "https://eu-central-1-1.aws.cloud2.influxdata.com"
   org: "Blast Furnace, Evonith"
-  bucket: "Evonith_BFData_200Vars"
+  database: "Evonith_BFData_200Vars"
+  write: "True" # True or False - case sensitive.
 
 selenium:
   url: "https://mcartalert.com/WebService/GeneralService.asmx?op=realtimedataVP"
   download_dir: "./data"  # Relative path for downloads
   download_button_xpath: "//button[@id='invoke']"
 
-data_tags:
 data_tags:
   temperature_variables:
     - "BF2_BFBD Furnace Body 12975mm Temp A"

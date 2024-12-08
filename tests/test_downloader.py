@@ -1,6 +1,9 @@
-import pytest
 from unittest.mock import patch, MagicMock
 from data.downloader import setup_webdriver, download_csv
+import logging
+import pytest
+
+log = logging.getLogger("root")
 
 @patch("data.downloader.webdriver.Chrome")
 @patch("data.downloader.WebDriverWait")

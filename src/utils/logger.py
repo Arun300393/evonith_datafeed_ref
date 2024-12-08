@@ -1,15 +1,23 @@
+from pathlib import Path
 import logging
+import logging.config
+import yaml
+import os
 
-def setup_logger(name: str, log_file: str, level=logging.INFO):
+def setup_logger(config_path: str = "src/config/logger_setting.yaml"):
     """
-    Setup logging for the application.
+    Setup logger using the provided YAML configuration file.
+    
+    Args:
+        config_path (str): Path to the YAML configuration file.
     """
-    formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-    handler = logging.FileHandler(log_file)
-    handler.setFormatter(formatter)
+    config_file_path = Path(config_path).resolve()
+    if not os.path.exists(config_file_path):
+        raise FileNotFoundError(f"Logging configuration file not found at {config_file_path}")
+    
+    with open(config_file_path, "r") as file:
+        config = yaml.safe_load(file)
+        logging.config.dictConfig(config)
 
-    logger = logging.getLogger(name)
-    logger.setLevel(level)
-    logger.addHandler(handler)
-
+    logger = logging.getLogger("root")
     return logger

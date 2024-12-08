@@ -1,0 +1,91 @@
+[INFO | logger | L11] 2024-12-07T22:08:19+0000: Get LATEST chromedriver version for google-chrome | logger.py
+[INFO | logger | L11] 2024-12-07T22:08:19+0000: Driver [C:\Users\sairi\.wdm\drivers\chromedriver\win64\126.0.6478.182\chromedriver-win32/chromedriver.exe] found in cache | logger.py
+[INFO | downloader | L53] 2024-12-07T22:08:20+0000: Opening webpage... | downloader.py
+[INFO | downloader | L71] 2024-12-07T22:08:21+0000: Clicking download button... | downloader.py
+[INFO | downloader | L84] 2024-12-07T22:08:23+0000: File downloaded successfully. | downloader.py
+[ERROR | downloader | L91] 2024-12-07T22:08:23+0000: Error downloading file: list index out of range | downloader.py
+[ERROR | task_engine | L554] 2024-12-07T22:08:26+0000: Task run failed with exception: IndexError('list index out of range') - Retries are exhausted | task_engine.py
+Traceback (most recent call last):
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\.venv\Lib\site-packages\prefect\task_engine.py", line 781, in run_context
+    yield self
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\.venv\Lib\site-packages\prefect\task_engine.py", line 1337, in run_task_sync
+    engine.call_task_fn(txn)
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\.venv\Lib\site-packages\prefect\task_engine.py", line 804, in call_task_fn
+    result = call_with_parameters(self.task.fn, parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\.venv\Lib\site-packages\prefect\utilities\callables.py", line 206, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\src\workflows\pipeline.py", line 16, in download_data_task
+    file_path, time_status = download_csv()
+                             ^^^^^^^^^^^^^^
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\src\data\downloader.py", line 85, in download_csv
+    last_csv = sorted(list(filter(lambda x: '.csv' in x, os.listdir(DOWNLOAD_DIR))))[0]
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+[ERROR | task_engine | L272] 2024-12-07T22:08:26+0000: Finished in state Failed('Task run encountered an exception IndexError: list index out of range') | task_engine.py
+[ERROR | flow_engine | L725] 2024-12-07T22:08:26+0000: Encountered exception during execution: IndexError('list index out of range') | flow_engine.py
+Traceback (most recent call last):
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\.venv\Lib\site-packages\prefect\flow_engine.py", line 721, in run_context
+    yield self
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\.venv\Lib\site-packages\prefect\flow_engine.py", line 1331, in run_flow_sync
+    engine.call_flow_fn()
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\.venv\Lib\site-packages\prefect\flow_engine.py", line 744, in call_flow_fn
+    result = call_with_parameters(self.flow.fn, self.parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\.venv\Lib\site-packages\prefect\utilities\callables.py", line 206, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\src\workflows\pipeline.py", line 48, in data_pipeline
+    file_path, time_status = download_data_task()
+                             ^^^^^^^^^^^^^^^^^^^^
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\.venv\Lib\site-packages\prefect\tasks.py", line 1002, in __call__
+    return run_task(
+           ^^^^^^^^^
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\.venv\Lib\site-packages\prefect\task_engine.py", line 1526, in run_task
+    return run_task_sync(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\.venv\Lib\site-packages\prefect\task_engine.py", line 1339, in run_task_sync
+    return engine.state if return_type == "state" else engine.result()
+                                                       ^^^^^^^^^^^^^^^
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\.venv\Lib\site-packages\prefect\task_engine.py", line 482, in result
+    raise self._raised
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\.venv\Lib\site-packages\prefect\task_engine.py", line 781, in run_context
+    yield self
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\.venv\Lib\site-packages\prefect\task_engine.py", line 1337, in run_task_sync
+    engine.call_task_fn(txn)
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\.venv\Lib\site-packages\prefect\task_engine.py", line 804, in call_task_fn
+    result = call_with_parameters(self.task.fn, parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\.venv\Lib\site-packages\prefect\utilities\callables.py", line 206, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\src\workflows\pipeline.py", line 16, in download_data_task
+    file_path, time_status = download_csv()
+                             ^^^^^^^^^^^^^^
+  File "e:\Personal\MarketResearch\EvonithSteel\Blast Furnace Project\PythonBlastFurnace\evonith_datafeed_job\src\data\downloader.py", line 85, in download_csv
+    last_csv = sorted(list(filter(lambda x: '.csv' in x, os.listdir(DOWNLOAD_DIR))))[0]
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+[INFO | _client | L1027] 2024-12-07T22:08:26+0000: HTTP Request: POST http://127.0.0.1:8327/api/flow_runs/e3ae30b8-e80f-44dc-909d-3d600515308e/set_state "HTTP/1.1 201 Created" | _client.py
+[ERROR | flow_engine | L685] 2024-12-07T22:08:26+0000: Finished in state Failed('Flow run encountered an exception: IndexError: list index out of range') | flow_engine.py
+[INFO | _client | L1742] 2024-12-07T22:08:28+0000: HTTP Request: GET http://127.0.0.1:8327/api/csrf-token?client=485d6ae0-4b05-4131-8888-49a647b9f52c "HTTP/1.1 422 Unprocessable Entity" | _client.py
+[INFO | _client | L1742] 2024-12-07T22:08:28+0000: HTTP Request: POST http://127.0.0.1:8327/api/logs/ "HTTP/1.1 201 Created" | _client.py
+[INFO | app | L11] 2024-12-07T22:09:30+0000: Starting the data pipeline | app.py
+[INFO | server | L784] 2024-12-07T22:09:33+0000: Starting temporary server on http://127.0.0.1:8184
+See https://docs.prefect.io/3.0/manage/self-host#self-host-a-prefect-server for more information on running a dedicated Prefect server. | server.py
+[INFO | _client | L1027] 2024-12-07T22:09:39+0000: HTTP Request: GET http://127.0.0.1:8184/api/health "HTTP/1.1 200 OK" | _client.py
+[INFO | _client | L1027] 2024-12-07T22:09:40+0000: HTTP Request: GET http://127.0.0.1:8184/api/admin/version "HTTP/1.1 200 OK" | _client.py
+[INFO | _client | L1027] 2024-12-07T22:09:40+0000: HTTP Request: GET http://127.0.0.1:8184/api/csrf-token?client=9a52afcd-2d9c-4b40-b484-ffd49d604a5b "HTTP/1.1 422 Unprocessable Entity" | _client.py
+[INFO | _client | L1027] 2024-12-07T22:09:40+0000: HTTP Request: POST http://127.0.0.1:8184/api/flows/ "HTTP/1.1 200 OK" | _client.py
+[INFO | _client | L1027] 2024-12-07T22:09:40+0000: HTTP Request: POST http://127.0.0.1:8184/api/flow_runs/ "HTTP/1.1 201 Created" | _client.py
+[INFO | flow_engine | L496] 2024-12-07T22:09:40+0000: Created flow run 'innocent-jaguarundi' for flow 'data-pipeline' | flow_engine.py
+[INFO | _client | L1027] 2024-12-07T22:09:40+0000: HTTP Request: POST http://127.0.0.1:8184/api/flow_runs/f084e89f-b4f2-474c-b222-a49d0710bcc8/set_state "HTTP/1.1 201 Created" | _client.py
+[INFO | _client | L1027] 2024-12-07T22:09:40+0000: HTTP Request: GET http://127.0.0.1:8184/api/flow_runs/f084e89f-b4f2-474c-b222-a49d0710bcc8 "HTTP/1.1 200 OK" | _client.py
+[INFO | pipeline | L44] 2024-12-07T22:09:40+0000: Starting data pipeline... | pipeline.py
+[INFO | pipeline | L15] 2024-12-07T22:09:40+0000: Starting download task... | pipeline.py
+[INFO | helper_functions_downloader | L36] 2024-12-07T22:09:40+0000: No CSV files found to delete. | helper_functions_downloader.py
+[INFO | logger | L11] 2024-12-07T22:09:40+0000: ====== WebDriver manager ====== | logger.py
+[INFO | _client | L1742] 2024-12-07T22:09:40+0000: HTTP Request: GET http://127.0.0.1:8184/api/flows/62d8a09f-2ef2-4d33-9755-2729299a5c41 "HTTP/1.1 200 OK" | _client.py
+[INFO | logger | L11] 2024-12-07T22:09:41+0000: Get LATEST chromedriver version for google-chrome | logger.py
+[INFO | logger | L11] 2024-12-07T22:09:41+0000: Get LATEST chromedriver version for google-chrome | logger.py

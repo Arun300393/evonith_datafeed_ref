@@ -12,6 +12,7 @@ prefect = "^3.1.5"
 influxdb3-python = "^0.10.0"
 selenium = "^4.27.1"
 webdriver-manager = "^4.0.2"
+pytest = "^8.3.4"
 
 
 [build-system]
