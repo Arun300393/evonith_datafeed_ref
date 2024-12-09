@@ -6,7 +6,7 @@ influxdb:
 
 selenium:
   url: "https://mcartalert.com/WebService/GeneralService.asmx?op=realtimedataVP"
-  download_dir: "./data"  # Relative path for downloads
+  download_dir: "C:/Users/princ/Downloads/evonith_plant_data"  # Relative path for downloads
   download_button_xpath: "//button[@id='invoke']"
 
 data_tags:

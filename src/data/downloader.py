@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from utils.helper_functions_downloader import clean_folder, rename_file, extract_datetime_from_filename
+=======
+import os
+>>>>>>> bda34178e3a0a37817a72ad694da751a0ee31172
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -8,9 +12,14 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from dotenv import load_dotenv
 from config.loader import load_config
+<<<<<<< HEAD
 from pathlib import Path
 import os, time
 import logging
+=======
+from utils.logger import setup_logger
+from utils.helper_functions_downloader import remove_csv, rename_csv
+>>>>>>> bda34178e3a0a37817a72ad694da751a0ee31172
 
 # Load environment variables
 load_dotenv()
