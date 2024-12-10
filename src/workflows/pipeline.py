@@ -7,7 +7,7 @@ import logging
 
 log = logging.getLogger("root")
 
-@task
+@task(retries=3)
 def download_data_task():
     """
     Task to download the data using Selenium.
@@ -27,7 +27,7 @@ def preprocess_data_task(file_path, time_status, config):
     log.info("Data preprocessing complete.")
     return validated_data
 
-@task
+@task(retries=3)
 def write_data_task(validated_data, config):
     """
     Task to write validated data to InfluxDB.
@@ -36,7 +36,7 @@ def write_data_task(validated_data, config):
     write_to_influxdb(config, validated_data)
     log.info("Data successfully written to InfluxDB.")
 
-@flow
+@flow(name="bf-data-200var")
 def data_pipeline():
     """
     Prefect flow to orchestrate the data pipeline.

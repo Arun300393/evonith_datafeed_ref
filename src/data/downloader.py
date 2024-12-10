@@ -71,7 +71,7 @@ def download_csv():
         )
         log.info("Clicking download button...")
         download_button.click()
-        time.sleep(2)
+        time.sleep(0.5)
         # Handle potential popup windows
         main_window = driver.current_window_handle
         all_windows = driver.window_handles
@@ -80,7 +80,6 @@ def download_csv():
                 driver.switch_to.window(window)
                 driver.close()
         driver.switch_to.window(main_window)
-        time.sleep(2)
 
         log.info("File downloaded successfully.")
         last_csv = sorted(list(filter(lambda x: '.csv' in x, os.listdir(DOWNLOAD_DIR))))[0]

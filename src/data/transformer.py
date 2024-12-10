@@ -14,6 +14,7 @@ def preprocess_file(file_path: str, time_status: datetime, tags: Dict):
     # Load Excel into a DataFrame
     USECOLS = get_cols()
     df = pd.read_csv(file_path, usecols=USECOLS, nrows=1)
+    log.info(f"timestep for file - {time_status}")
     time_status = preprocess_timestamp(time_status)
     remove_file()
     # Convert to dictionary for validation
