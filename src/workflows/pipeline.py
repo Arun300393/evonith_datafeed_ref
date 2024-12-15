@@ -1,11 +1,13 @@
 from data.downloader import download_csv
 from data.transformer import preprocess_file
 from data.writer import write_to_influxdb
+from utils.helper_functions_pipeline import retry
 from config.loader import load_config
 import logging
 
 log = logging.getLogger("root")
 
+@retry(retries=3, delay=5)
 def download_data_task():
     """
     Task to download the data using Selenium.
@@ -24,6 +26,7 @@ def preprocess_data_task(file_path, time_status, config):
     log.info("Data preprocessing complete.")
     return validated_data
 
+@retry(retries=3, delay=5)
 def write_data_task(validated_data, config):
     """
     Task to write validated data to InfluxDB.
