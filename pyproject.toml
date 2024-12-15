@@ -8,11 +8,12 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.9"
 pandas = "^2.2.3"
-prefect = "^3.1.5"
 influxdb3-python = "^0.10.0"
 selenium = "^4.27.1"
 webdriver-manager = "^4.0.2"
 pytest = "^8.3.4"
+pyyaml = "^6.0.2"
+pydantic = "^2.10.3"
 
 
 [build-system]

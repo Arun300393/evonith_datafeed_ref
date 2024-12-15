@@ -1,4 +1,3 @@
-from prefect import flow, task
 from data.downloader import download_csv
 from data.transformer import preprocess_file
 from data.writer import write_to_influxdb
@@ -7,7 +6,6 @@ import logging
 
 log = logging.getLogger("root")
 
-@task(retries=3)
 def download_data_task():
     """
     Task to download the data using Selenium.
@@ -17,7 +15,6 @@ def download_data_task():
     log.info(f"Downloaded file to: {file_path}")
     return file_path, time_status
 
-@task
 def preprocess_data_task(file_path, time_status, config):
     """
     Task to preprocess and validate the data.
@@ -27,7 +24,6 @@ def preprocess_data_task(file_path, time_status, config):
     log.info("Data preprocessing complete.")
     return validated_data
 
-@task(retries=3)
 def write_data_task(validated_data, config):
     """
     Task to write validated data to InfluxDB.
@@ -36,7 +32,6 @@ def write_data_task(validated_data, config):
     write_to_influxdb(config, validated_data)
     log.info("Data successfully written to InfluxDB.")
 
-@flow(name="bf-data-200var")
 def data_pipeline():
     """
     Prefect flow to orchestrate the data pipeline.
