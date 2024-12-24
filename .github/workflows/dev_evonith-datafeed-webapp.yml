@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: |
           .\venv\Scripts\activate
-          pip install -r requirements.txt
+          pip3 install -r requirements.txt
       
       - name: Run app.py
         run: |
@@ -42,7 +42,7 @@ jobs:
           which pip3
           which python
           which python3
-          python src\app.py
+          python3 src\app.py
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
