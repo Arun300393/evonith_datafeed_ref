@@ -34,7 +34,6 @@ jobs:
         run: |
           .\venv\Scripts\activate
           pip install -r requirements.txt
-          pip install PyYAML
       
       - name: Run app.py
         run: |

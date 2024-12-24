@@ -2,6 +2,7 @@ from utils.logger import setup_logger
 from datetime import datetime
 from workflows.pipeline import data_pipeline
 import logging
+import yaml
 
 # Setup the logger at the start of the application
 setup_logger()
