@@ -40,7 +40,7 @@ jobs:
           python --version
           which python
           which python3
-          python -m src\\app.py
+          python -m src\app.py
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
