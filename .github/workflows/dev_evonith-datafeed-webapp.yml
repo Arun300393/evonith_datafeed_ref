@@ -46,9 +46,8 @@ jobs:
       - name: Run app.py
         run: |
           source .venv/bin/activate
-          python src/app.py
-          ls -ltra data
-              
+          timeout 30s python src/app.py
+          
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       # - name: Zip artifact for deployment
