@@ -46,8 +46,23 @@ jobs:
       - name: Run app.py
         run: |
           source .venv/bin/activate
-          timeout 10s python src/app.py 2>&1
+          timeout 10s python src/app.py 2>/dev/null
           ls -ltra data
+      
+      - name: Check if directory is empty
+        run: |
+          DIR="data"
+          if [ -d "$DIR" ]; then
+            if [ -z "$(ls -A $DIR)" ]; then
+              echo "Directory $DIR is empty."
+              exit 1
+            else
+              echo "Directory $DIR is not empty."
+            fi
+          else
+            echo "Directory $DIR does not exist."
+            exit 1
+          fi
           
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
