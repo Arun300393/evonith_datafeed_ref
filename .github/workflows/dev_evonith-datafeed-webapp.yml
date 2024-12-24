@@ -25,15 +25,15 @@ jobs:
       # Create and activate virtual environment
       - name: Set up virtual environment
         run: |
-          python -m venv venv
+          python3 -m venv venv
           .\venv\Scripts\activate
-          python3 -m pip3 install --upgrade pip
+          python3 -m pip install --upgrade pip
 
       # Install dependencies
       - name: Install dependencies
         run: |
           .\venv\Scripts\activate
-          pip3 install -r requirements.txt
+          pip install -r requirements.txt
       
       - name: Run app.py
         run: |
