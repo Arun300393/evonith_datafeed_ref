@@ -36,7 +36,8 @@ jobs:
           which python
           which python3
           pwd
-          pyhton -m app.py
+          pyhton -m ./src/app.py
+          ls -ltra data
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
