@@ -40,10 +40,7 @@ jobs:
           python --version
           which python
           which python3
-          pwd
-          dir
-          python3 .\\src\\app.py
-          dir data
+          python src\\app.py
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
