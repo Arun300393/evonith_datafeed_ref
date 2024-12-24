@@ -36,7 +36,6 @@ jobs:
           which python
           which python3
           pwd
-          python run ./src/app.py
           python3 run ./src/app.py
           ls -ltra data
         
