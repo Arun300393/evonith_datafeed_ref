@@ -32,10 +32,10 @@ def setup_webdriver():
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")
     options.add_argument('--headless')
-    options.addArguments("--no-sandbox")
-    options.addArguments("--disable-dev-shm-usage")
-    options.addArguments("--disable-extensions")
-    options.addArguments("--disable-gpu")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-extensions")
+    options.add_argument("--disable-gpu")
     log.info(f"Downloading to {os.path.abspath(config["selenium"]["download_dir"])}")
     prefs = {
         'profile.default_content_settings.popups': False,
