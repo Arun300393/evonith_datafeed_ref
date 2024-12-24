@@ -46,7 +46,7 @@ jobs:
       - name: Run app.py
         run: |
           source .venv/bin/activate
-          timeout 10s python src/app.py 2>/dev/null
+          timeout 10s python src/app.py 2>error.log || true
           ls -ltra data
       
       - name: Check if directory is empty
