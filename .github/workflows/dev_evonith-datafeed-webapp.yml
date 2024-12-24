@@ -21,6 +21,17 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      
+      - name: Create .env file from secrets
+        run: |
+          echo "USERNAME_REALTIMEDATA=${{ secrets.USERNAME_REALTIMEDATA }}" >> .env
+          echo "PASSWORD_REALTIMEDATA=${{ secrets.PASSWORD_REALTIMEDATA }}" >> .env
+
+      - name: Display .env file (for debugging, optional)
+        run: cat .env
+        env:
+          USERNAME_REALTIMEDATA: ${{ secrets.USERNAME_REALTIMEDATA }}
+          PASSWORD_REALTIMEDATA: ${{ secrets.PASSWORD_REALTIMEDATA }}
 
       # Step 3: Create and activate virtual environment
       - name: Create and activate virtual environment
@@ -34,6 +45,7 @@ jobs:
         run: |
           source .venv/bin/activate
           python src/app.py
+          ls -ltra data
               
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
