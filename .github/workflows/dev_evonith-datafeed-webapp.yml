@@ -22,13 +22,18 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Create and start virtual environment
+      # Create and activate virtual environment
+      - name: Set up virtual environment
         run: |
           python -m venv venv
-          source venv/bin/activate
-      
+          .\venv\Scripts\activate
+          python -m pip install --upgrade pip
+
+      # Install dependencies
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          .\venv\Scripts\activate
+          if exist requirements.txt pip install -r requirements.txt
       
       - name: Run app.py
         run: |
