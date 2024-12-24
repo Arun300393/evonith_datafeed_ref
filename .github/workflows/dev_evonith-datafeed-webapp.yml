@@ -61,20 +61,20 @@ jobs:
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F95354A9182F4BB4A184DADCF18F0E47 }}
 
         
-      - name: Setup Azure Web App
-        run: |
-          az webapp up --sku F1 --name 'evonith-datafeed-webapp' --resource-group 'evonith-datafeed-app' --plan 'ASP-evonithdatafeedapp-9d28 (F1: 1)' --location 'West Europe' --subscription ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F95354A9182F4BB4A184DADCF18F0E47 }}
+      # - name: Setup Azure Web App
+      #   run: |
+      #     az webapp up --sku F1 --name 'evonith-datafeed-webapp' --resource-group 'evonith-datafeed-app' --plan 'ASP-evonithdatafeedapp-9d28 (F1: 1)' --location 'West Europe' --subscription ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F95354A9182F4BB4A184DADCF18F0E47 }}
 
-      - name: Deploy to Azure App Service
-        run: |
-          az webapp deploy --name 'evonith-datafeed-webapp' --resource-group 'evonith-datafeed-app' --src-path .
+      # - name: Deploy to Azure App Service
+      #   run: |
+      #     az webapp deploy --name 'evonith-datafeed-webapp' --resource-group 'evonith-datafeed-app' --src-path .
 
-      # - name: 'Deploy to Azure Web App'
-      #   uses: azure/webapps-deploy@v3
-      #   id: deploy-to-webapp
-      #   with:
-      #     app-name: 'evonith-datafeed-webapp'
-      #     slot-name: 'Production'
+      - name: 'Deploy to Azure Web App'
+        uses: azure/webapps-deploy@v3
+        id: deploy-to-webapp
+        with:
+          app-name: 'evonith-datafeed-webapp'
+          slot-name: 'Production'
                 
   #     # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
   #     - name: Zip artifact for deployment
