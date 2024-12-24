@@ -41,7 +41,6 @@ jobs:
           which python
           which python3
           pwd
-          dir /S
           dir
           python3 .\\src\\app.py
           dir data
