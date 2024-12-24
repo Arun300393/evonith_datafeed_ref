@@ -41,9 +41,10 @@ jobs:
           which python
           which python3
           pwd
-          ls -ltra
+          dir /S
+          dir
           python3 .\\src\\app.py
-          ls -ltra data
+          dir data
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
