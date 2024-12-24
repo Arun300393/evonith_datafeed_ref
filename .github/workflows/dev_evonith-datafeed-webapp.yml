@@ -26,12 +26,14 @@ jobs:
         run: |
           echo "USERNAME_REALTIMEDATA=${{ secrets.USERNAME_REALTIMEDATA }}" >> .env
           echo "PASSWORD_REALTIMEDATA=${{ secrets.PASSWORD_REALTIMEDATA }}" >> .env
+          echo "TOKEN=${{ secrets.TOKEN }}" >> .env
 
       - name: Display .env file (for debugging, optional)
         run: cat .env
         env:
           USERNAME_REALTIMEDATA: ${{ secrets.USERNAME_REALTIMEDATA }}
           PASSWORD_REALTIMEDATA: ${{ secrets.PASSWORD_REALTIMEDATA }}
+          TOKEN: ${{ secrets.TOKEN }}
 
       # Step 3: Create and activate virtual environment
       - name: Create and activate virtual environment
