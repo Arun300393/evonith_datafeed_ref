@@ -46,7 +46,8 @@ jobs:
       - name: Run app.py
         run: |
           source .venv/bin/activate
-          timeout 30s python src/app.py
+          timeout 10s python src/app.py
+          ls -ltra data
           
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
