@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -22,23 +22,19 @@ jobs:
         with:
           python-version: '3.12'
 
-      # Create and activate virtual environment
-      - name: Set up virtual environment
+      # Step 3: Create and activate virtual environment
+      - name: Create and activate virtual environment
         run: |
-          python3 -m venv venv
-          .\venv\Scripts\activate
-          python3 -m pip install --upgrade pip
+          python -m venv .venv
+          source .venv/bin/activate
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      # Install dependencies
-      - name: Install dependencies
-        run: |
-          .\venv\Scripts\activate
-          pip3 install -r requirements.txt
-      
       - name: Run app.py
         run: |
-          python3 src/app.py
-        
+          source .venv/bin/activate
+          python src/app.py
+              
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       # - name: Zip artifact for deployment
