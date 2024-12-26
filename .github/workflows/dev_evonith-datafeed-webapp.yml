@@ -72,9 +72,9 @@ jobs:
       - name: Build Docker image
         run: |
           docker build \
-            --build-arg USERNAME_REALTIMEDATA=$USERNAME_REALTIMEDATA \
-            --build-arg PASSWORD_REALTIMEDATA=$PASSWORD_REALTIMEDATA \
-            --build-arg TOKEN=$TOKEN \
+            --build-arg USERNAME_REALTIMEDATA= ${{ secrets.USERNAME_REALTIMEDATA }} \
+            --build-arg PASSWORD_REALTIMEDATA=${{ secrets.PASSWORD_REALTIMEDATA }} \
+            --build-arg TOKEN=${{ secrets.TOKEN }} \
             -t evonithdatafeedcontainerregistry.azurecr.io/evonith-datafeed-image:latest .
 
 
