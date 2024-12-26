@@ -72,16 +72,16 @@ jobs:
       - name: Build Docker image
         run: |
           docker build \
-            --build-arg USERNAME_REALTIMEDATA=${{ secrets.USERNAME_REALTIMEDATA }} \
-            --build-arg PASSWORD_REALTIMEDATA=${{ secrets.PASSWORD_REALTIMEDATA }} \
-            --build-arg TOKEN=${{ secrets.TOKEN }} \
+            --build-arg USERNAME_REALTIMEDATA=$USERNAME_REALTIMEDATA \
+            --build-arg PASSWORD_REALTIMEDATA=$PASSWORD_REALTIMEDATA \
+            --build-arg TOKEN=$TOKEN \
             -t evonithdatafeedcontainerregistry.azurecr.io/evonith-datafeed-image:latest .
 
-      - name: print .env secrets
-        run: |
-          echo "USERNAME_REALTIMEDATA" >> .env
-          echo "PASSWORD_REALTIMEDATA" >> .env
-          echo "TOKEN" >> .env
+      # - name: print .env secrets
+      #   run: |
+      #     echo "USERNAME_REALTIMEDATA" >> .env
+      #     echo "PASSWORD_REALTIMEDATA" >> .env
+      #     echo "TOKEN" >> .env
 
       # Push the Docker image to ACR
       - name: Push Docker image
