@@ -15,9 +15,9 @@ RUN echo "USERNAME_REALTIMEDATA=${USERNAME_REALTIMEDATA}" > .env && \
     echo "PASSWORD_REALTIMEDATA=${PASSWORD_REALTIMEDATA}" > .env && \
     echo "TOKEN=${TOKEN}" > .env
 
-#Install virtual env and activate 
-RUN python -m venv .venv && \
-    source .venv/bin/activate
+# #Install virtual env and activate 
+# RUN python -m venv .venv && \
+#     source .venv/bin/activate
 
 # Set the working directory inside the container
 WORKDIR /app
