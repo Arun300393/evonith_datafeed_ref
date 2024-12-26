@@ -7,6 +7,11 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
+# Set the working directory inside the container
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y python3 python3-venv python3-pip
+
 ARG USERNAME_REALTIMEDATA
 ARG PASSWORD_REALTIMEDATA
 ARG TOKEN
@@ -16,11 +21,13 @@ RUN echo "USERNAME_REALTIMEDATA=${USERNAME_REALTIMEDATA}" > .env && \
     echo "TOKEN=${TOKEN}" > .env
 
 # #Install virtual env and activate 
-RUN python -m venv .venv
-RUN source .venv/bin/activate
+RUN python3 -m venv .venv
 
-# Set the working directory inside the container
-WORKDIR /app
+# Switch to bash
+SHELL ["/bin/bash", "-c"]
+
+# Activate the virtual environment and install dependencies
+RUN source .venv/bin/activate
 
 # Copy requirements file to the working directory
 COPY requirements.txt .
@@ -45,6 +52,6 @@ COPY . .
 #EXPOSE 8000
 
 # # Define the command to run the application
-CMD ["python", "src/app.py"]
+# CMD ["python", "src/app.py"]
 # Activate the virtual environment and define the entry point
-# CMD ["/bin/bash", "-c", "source .venv/bin/activate && src/app.py"]
+CMD ["/bin/bash", "-c", "source .venv/bin/activate && python3 src/app.py"]
