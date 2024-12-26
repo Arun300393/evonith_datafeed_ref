@@ -71,7 +71,11 @@ jobs:
       # Build and tag the Docker image
       - name: Build Docker image
         run: |
-          docker build -t evonithdatafeedcontainerregistry.azurecr.io/evonith-datafeed-image:latest .
+          docker build \
+            --build-arg USERNAME_REALTIMEDATA=${{ secrets.USERNAME_REALTIMEDATA }} \
+            --build-arg PASSWORD_REALTIMEDATA=${{ secrets.PASSWORD_REALTIMEDATA }} \
+            --build-arg TOKEN=${{ secrets.TOKEN }} \
+            -t evonithdatafeedcontainerregistry.azurecr.io/evonith-datafeed-image:latest .
 
       # Push the Docker image to ACR
       - name: Push Docker image
