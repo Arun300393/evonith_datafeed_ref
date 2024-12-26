@@ -71,12 +71,12 @@ jobs:
       # Build and tag the Docker image
       - name: Build Docker image
         run: |
-          docker build -t evonithdatafeedcontainerregistry.azurecr.io/evonith-datafeed-image:latest .
+          docker build -t evonithdatafeedcontainerregistry.azurecr.io/evonith-datafeed-image: .
 
       # Push the Docker image to ACR
       - name: Push Docker image
         run: |
-          docker push evonithdatafeedcontainerregistry.azurecr.io/evonith-datafeed-image:latest:latest
+          docker push evonithdatafeedcontainerregistry.azurecr.io/evonith-datafeed-image:latest
 
         
       # - name: Setup Azure Web App
