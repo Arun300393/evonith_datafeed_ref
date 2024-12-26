@@ -40,18 +40,18 @@ jobs:
           PASSWORD_REALTIMEDATA: ${{ secrets.PASSWORD_REALTIMEDATA }}
           TOKEN: ${{ secrets.TOKEN }}
 
-      # Step 3: Create and activate virtual environment
-      - name: Create and activate virtual environment
-        run: |
-          python -m venv .venv
-          source .venv/bin/activate
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+      # # Step 3: Create and activate virtual environment
+      # - name: Create and activate virtual environment
+      #   run: |
+      #     python -m venv .venv
+      #     source .venv/bin/activate
+      #     python -m pip install --upgrade pip
+      #     pip install -r requirements.txt
 
-      - name: Run app.py
-        run: |
-          source .venv/bin/activate
-          timeout 10s python src/app.py 2>error.log || true
+      # - name: Run app.py
+      #   run: |
+      #     source .venv/bin/activate
+      #     timeout 10s python src/app.py 2>error.log || true
 
       # - name: Login to Azure
       #   uses: azure/login@v2
