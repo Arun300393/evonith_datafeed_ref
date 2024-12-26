@@ -77,11 +77,13 @@ jobs:
             --build-arg TOKEN=$TOKEN \
             -t evonithdatafeedcontainerregistry.azurecr.io/evonith-datafeed-image:latest .
 
+
       # Push the Docker image to ACR
       - name: Push Docker image
         run: |
           docker push evonithdatafeedcontainerregistry.azurecr.io/evonith-datafeed-image:latest
-
+          echo "USERNAME_REALTIMEDATA"
+          echo "PASSWORD_REALTIMEDATA"
         
       # - name: Setup Azure Web App
       #   run: |
