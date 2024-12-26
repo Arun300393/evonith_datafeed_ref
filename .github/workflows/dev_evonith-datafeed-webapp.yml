@@ -77,12 +77,6 @@ jobs:
             --build-arg TOKEN=$TOKEN \
             -t evonithdatafeedcontainerregistry.azurecr.io/evonith-datafeed-image:latest .
 
-      # - name: print .env secrets
-      #   run: |
-      #     echo "USERNAME_REALTIMEDATA" >> .env
-      #     echo "PASSWORD_REALTIMEDATA" >> .env
-      #     echo "TOKEN" >> .env
-
       # Push the Docker image to ACR
       - name: Push Docker image
         run: |
