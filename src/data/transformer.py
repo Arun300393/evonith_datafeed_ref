@@ -26,5 +26,5 @@ def preprocess_file(file_path: str, time_status: datetime, tags: Dict):
             "values": {var: df[var].iloc[0] for var in variables if var in df.columns}
         }
         validated_data.append(SensorData.validate_data(data))
-        log.info(f"Wrote {variables} of {measurement} for {time_status}.")
+        log.info(f"Wrote {variables} for {time_status}.")
     return validated_data
