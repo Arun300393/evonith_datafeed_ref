@@ -82,8 +82,6 @@ jobs:
       - name: Push Docker image
         run: |
           docker push evonithdatafeedcontainerregistry.azurecr.io/evonith-datafeed-image:latest
-          echo "The usernamre is $USERNAME_REALTIMEDATA"
-          echo "The password is $PASSWORD_REALTIMEDATA"
         
       # - name: Setup Azure Web App
       #   run: |
