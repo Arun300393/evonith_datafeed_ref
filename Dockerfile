@@ -16,9 +16,9 @@ ARG USERNAME_REALTIMEDATA
 ARG PASSWORD_REALTIMEDATA
 ARG TOKEN
 
-RUN echo "USERNAME_REALTIMEDATA=${USERNAME_REALTIMEDATA}" > .env && \
-    echo "PASSWORD_REALTIMEDATA=${PASSWORD_REALTIMEDATA}" > .env && \
-    echo "TOKEN=${TOKEN}" > .env
+# RUN echo "USERNAME_REALTIMEDATA=${USERNAME_REALTIMEDATA}" > .env && \
+#     echo "PASSWORD_REALTIMEDATA=${PASSWORD_REALTIMEDATA}" > .env && \
+#     echo "TOKEN=${TOKEN}" > .env
 
 # #Install virtual env and activate 
 RUN python3 -m venv .venv
