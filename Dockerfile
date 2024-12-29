@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y python3 python3-venv python3-pip
 # Install necessary dependencies for Chrome and Chromedriver
 RUN apt-get update && apt-get install -y \
     wget \
+    vim \
     curl \
     unzip \
     gnupg \
@@ -52,10 +53,6 @@ RUN CHROME_DRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com
 
 RUN google-chrome-stable --version
 
-# RUN ls -l /root/.wdm/drivers/chromedriver/linux64/114.0.5735.90/chromedriver
-
-# RUN chmod +x /root/.wdm/drivers/chromedriver/linux64/114.0.5735.90/chromedriver
-
 ARG USERNAME_REALTIMEDATA
 ARG PASSWORD_REALTIMEDATA
 ARG TOKEN
@@ -80,10 +77,6 @@ COPY requirements.txt .
 RUN .venv/bin/pip install --upgrade pip && \
     .venv/bin/pip install -r requirements.txt
 
-# # Install dependencies and create a virtual environment
-# RUN python -m pip install --upgrade pip && \
-#     pip install --no-cache-dir -r requirements.txt
-
 # Copy the rest of the application code to the working directory
 COPY . .
 
@@ -92,10 +85,5 @@ COPY . .
 #RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
 #USER appuser
 
-# Expose a port (if the app listens on one)
-#EXPOSE 8000
-
-# # Define the command to run the application
-# CMD ["python", "src/app.py"]
 # Activate the virtual environment and define the entry point
 CMD ["/bin/bash", "-c", "source .venv/bin/activate && python3 src/app.py"]

@@ -13,12 +13,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # environment:
-    #   name: 'Production'
-    #   url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    # permissions:
-    #   id-token: write #This is required for requesting the JWT
-
     steps:
       - uses: actions/checkout@v4
 
@@ -33,14 +27,14 @@ jobs:
           echo "PASSWORD_REALTIMEDATA=${{ secrets.PASSWORD_REALTIMEDATA }}" >> .env
           echo "TOKEN=${{ secrets.TOKEN }}" >> .env
 
-      - name: Display .env file (for debugging, optional)
-        run: cat .env
-        # env:
-        #   USERNAME_REALTIMEDATA: ${{ secrets.USERNAME_REALTIMEDATA }}
-        #   PASSWORD_REALTIMEDATA: ${{ secrets.PASSWORD_REALTIMEDATA }}
-        #   TOKEN: ${{ secrets.TOKEN }}
+      # - name: Display .env file (for debugging, optional)
+      #   run: cat .env
+      #   env:
+      #     USERNAME_REALTIMEDATA: ${{ secrets.USERNAME_REALTIMEDATA }}
+      #     PASSWORD_REALTIMEDATA: ${{ secrets.PASSWORD_REALTIMEDATA }}
+      #     TOKEN: ${{ secrets.TOKEN }}
 
-      # # Step 3: Create and activate virtual environment
+      # Step 3: Create and activate virtual environment
       # - name: Create and activate virtual environment
       #   run: |
       #     python -m venv .venv
@@ -60,7 +54,7 @@ jobs:
       #     tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_957F51C87A26470BB59D0CEF5DB5A53A }}
       #     subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F95354A9182F4BB4A184DADCF18F0E47 }}
 
-           # Log in to Azure Container Registry
+      # Log in to Azure Container Registry
       - name: Log in to Azure Container Registry
         uses: azure/docker-login@v1
         with:
@@ -76,6 +70,7 @@ jobs:
       #       --build-arg PASSWORD_REALTIMEDATA=${{ secrets.PASSWORD_REALTIMEDATA }} \
       #       --build-arg TOKEN=${{ secrets.TOKEN }} \
       #       -t evonithdatafeedcontainerregistry.azurecr.io/evonith-datafeed-image:latest .
+
       - name: Build Docker image
         run: |
           docker build -t evonithdatafeedcontainerregistry.azurecr.io/evonith-datafeed-image:latest .
@@ -85,22 +80,7 @@ jobs:
       - name: Push Docker image
         run: |
           docker push evonithdatafeedcontainerregistry.azurecr.io/evonith-datafeed-image:latest
-        
-      # - name: Setup Azure Web App
-      #   run: |
-      #     az webapp up --sku F1 --name 'evonith-datafeed-webapp' --resource-group 'evonith-datafeed-app' --plan 'ASP-evonithdatafeedapp-9d28 (F1: 1)' --location 'West Europe' --subscription ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F95354A9182F4BB4A184DADCF18F0E47 }}
-
-      # - name: Deploy to Azure App Service
-      #   run: |
-      #     az webapp deploy --name 'evonith-datafeed-webapp' --resource-group 'evonith-datafeed-app' --src-path .
-
-      # - name: 'Deploy to Azure Web App'
-      #   uses: azure/webapps-deploy@v3
-      #   id: deploy-to-webapp
-      #   with:
-      #     app-name: 'evonith-datafeed-webapp'
-      #     slot-name: 'Production'
-                
+                        
   #     # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
   #     - name: Zip artifact for deployment
   #       run: zip release.zip ./* -r
