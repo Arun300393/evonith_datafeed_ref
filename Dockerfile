@@ -52,9 +52,9 @@ RUN CHROME_DRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com
 
 RUN google-chrome-stable --version
 
-RUN ls -l /root/.wdm/drivers/chromedriver/linux64/114.0.5735.90/chromedriver
+# RUN ls -l /root/.wdm/drivers/chromedriver/linux64/114.0.5735.90/chromedriver
 
-RUN chmod +x /root/.wdm/drivers/chromedriver/linux64/114.0.5735.90/chromedriver
+# RUN chmod +x /root/.wdm/drivers/chromedriver/linux64/114.0.5735.90/chromedriver
 
 ARG USERNAME_REALTIMEDATA
 ARG PASSWORD_REALTIMEDATA
