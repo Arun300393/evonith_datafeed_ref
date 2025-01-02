@@ -13,6 +13,7 @@ ENV PYTHONUNBUFFERED=1
 # Set the working directory inside the container
 WORKDIR /app
 
+#installation of python , venv, pip module
 RUN apt-get update && apt-get install -y python3 python3-venv python3-pip
 
 # Install necessary dependencies for Chrome and Chromedriver
